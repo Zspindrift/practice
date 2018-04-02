@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function later(){
+            var t = prompt("请输入年月日时分秒（格式：'YYYY-MM-DD hh:mm:ss';）");
+            var date = new Date(new Date(t).getTime() + 1000);
+            var YYYY = date.getFullYear();
+            var MM = date.getMonth() + 1;
+            var DD = date.getDate();
+            var hh = date.getHours();
+            var mm = date.getMinutes();
+            var ss = date.getSeconds();
+            var time = YYYY+"-"+MM+"-"+DD+" "+hh+":"+mm+":"+ss;
+            document.write(time);
+        }
+        later();
+    </script>
+</body>
+</html>
