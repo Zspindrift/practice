@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>extend</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="vue.js"></script>
+    <script>
+
+        var authorExtend = Vue.extend({
+            template: "<p><a :href='authorUrl'>{{authorName}}</a></p>",
+            data: function(){
+                return {
+                    authorName: 'zhangyue',
+                    authorUrl: 'http://www.baidu.com'
+                };
+            }
+        });
+        //创建一个组件并挂载到元素上
+        new authorExtend().$mount('#app');
+        // new Vue({
+        //     el: '#app',
+        //     data: {
+        //
+        //     }
+        // });
+    </script>
+</body>
+</html>
