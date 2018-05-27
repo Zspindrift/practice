@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <h1 v-zhangyue="aa">zhangyue</h1>
+</div>
+
+<script src="vue.js"></script>
+<script>
+    // Vue.directive("zhangyue",function(el,binding,vNode){
+    //     el.style.background = binding.value;
+    // });
+    Vue.directive("zhangyue",{
+        bind: function(el, binding, vNode){
+            console.log('bind');
+            el.style.background = binding.value;
+        },
+        inserted: function(){
+            console.log("inserted");
+        },
+        update: function(){
+            console.log("update");
+        },
+        componentUpdated: function(){//组件更新
+            console.log("componentUpdated");
+        },
+        unbind: function(){//销毁
+            console.log("unbind");
+        }
+    });
+
+    new Vue({
+        el: '#app',
+        data: {
+            aa: 'green'
+        }
+    });
+</script>
+</body>
+</html>
