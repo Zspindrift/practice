@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">{{msg}}
+    <button @click='change'>改变</button>
+    <button @click='destroy'>销毁</button>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 1,
+            timer: null
+        },
+        methods: {
+            change: function(){
+                this.msg++;
+            },
+            destroy: function(){
+                //完全销毁一个实例。解绑它的全部指令及监听事件
+                //触发beforeDestroy和destroyed钩子
+                vm.$destroy();
+            }
+        },
+        beforeCreate: function(){
+            console.log('beforeCreate');
+        },
+        created: function(){
+            console.log('created');
+        },
+        beforeMount: function(){
+            console.log('beforeMount');
+        },
+        //在mounted阶段就可以获得真实的dom
+        //dom渲染完成
+        mounted: function(){
+            console.log('mounted');
+            this.timer = setInterval(()=>{
+                console.log('time');
+            this.msg++;
+        },1000)
+        },
+        beforeUpdate: function(){
+            console.log('beforeUpdate');
+        },
+        updated: function(){
+            console.log('updated');
+        },
+        beforeDestroy: function(){
+            console.log('beforeDestroy');
+            clearInterval(this.timer);
+        },
+        destroyed: function(){
+            console.log('destroyed');
+        }
+    });
+</script>
+</body>
+</html>
